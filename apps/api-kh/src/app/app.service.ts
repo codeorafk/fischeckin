@@ -16,7 +16,7 @@ export class AppService {
     if (paths) {
       var excel = await this.readCell(paths);
       var getToken = await this.getToken();
-      for (let i = 1050; i < excel.rowCount; i++) {
+      for (let i = 1; i < excel.rowCount; i++) {
         const row = excel.getRow(i);
         const cccd = row.getCell(2).value;
 
