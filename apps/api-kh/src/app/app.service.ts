@@ -16,15 +16,17 @@ export class AppService {
     if (paths) {
       var excel = await this.readCell(paths);
       var getToken = await this.getToken();
-      for (let i = 1; i < excel.rowCount; i++) {
+      for (let i = 1050; i < excel.rowCount; i++) {
         const row = excel.getRow(i);
         const cccd = row.getCell(2).value;
 
         if (cccd) {
-          if (i % 50 === 0) {
+          if (i % 30 === 0) {
             getToken = await this.getToken();
           }
+          console.log(i);
           const info = await this.getInfo(cccd.toString(), getToken);
+          console.log('success: ', info['success']);
           if (info && info['success'] === 1) {
             let NAME_CHECK = info['url']?.toString();
             if (NAME_CHECK) {
@@ -122,18 +124,22 @@ export class AppService {
       'Access-Control-Allow-Origin': '*',
       Cookie: cookie,
     };
+    try {
+      axios.default.defaults.timeout = 5000;
+      const rs = await axios.default.post(
+        'https://masothue.com/Ajax/Search',
+        form,
+        {
+          headers: header,
+          withCredentials: true,
+        }
+      );
 
-    const rs = await axios.default.post(
-      'https://masothue.com/Ajax/Search',
-      form,
-      {
-        headers: header,
-        withCredentials: true,
+      if (rs.data) {
+        return rs.data;
       }
-    );
-    if (rs.data) {
-      return rs.data;
-    }
+    } catch (e) {}
+
     return '';
   }
 }
