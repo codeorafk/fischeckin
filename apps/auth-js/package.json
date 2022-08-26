@@ -1,0 +1,5 @@
+{
+  "name": "@nx-project/apps/auth-js",
+  "version": "0.0.1",
+  "type": "commonjs"
+}

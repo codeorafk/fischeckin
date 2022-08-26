@@ -1,0 +1,136 @@
+<div class="map-container">
+  <div class="map-frame">
+    <div style="position: fixed; z-index: 1; right: 10px">
+      <div *ngIf="checkLogin" style="display: flex">
+        <button class="btnHeader" style="margin-right: 10px" (click)="trips()">
+          Hành trình của bạn
+        </button>
+        <button class="btnHeader" *ngIf="isStartTrip" (click)="startTrip()">
+          Bắt đầu hành trình
+        </button>
+        <button class="btnHeader" *ngIf="!isStartTrip" (click)="endTrip()">
+          Kết thúc hành trình
+        </button>
+      </div>
+    </div>
+
+    <div id="map" style="height: 100vh; z-index: 0; cursor: pointer"></div>
+    <div id="myList" style="
+        position: fixed;
+        display: none;
+        left: 0;
+        bottom: 0;
+        top: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+      " (click)="myList.style.display = 'none'" #myList>
+      <div class="form-list" (click)="$event.stopPropagation()">
+        <form style="height: 100%">
+          <div style="
+              height: calc(100% - 70px);
+              overflow-y: scroll;
+              margin-top: 8px;
+            ">
+            <div *ngFor="let item of listTrip" class="card-list">
+              <p>
+                Hành trình ngày
+                {{ item['createdAt'] | render: ['date'] | async }}
+              </p>
+              <div style="display: flex; justify-content: space-around">
+                <div *ngFor="let item of item['detail']">
+                  <div *ngIf="item.status === 'start'; else endTrip">
+                    <div>
+                      <p>Điểm bắt đầu</p>
+                      <p>
+                        {{ item.createdAt | render: ['time'] | async }}
+                      </p>
+                      <p>{{ item.lat }}</p>
+                      <p>{{ item.lng }}</p>
+                    </div>
+                  </div>
+                  <ng-template #endTrip>
+                    <div>
+                      <p>Điểm kết thúc</p>
+                      <p>
+                        {{ item.createdAt | render: ['time'] | async }}
+                      </p>
+                      <p>{{ item.lat }}</p>
+                      <p>{{ item.lng }}</p>
+                    </div>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btnCancel" (click)="closeFormList()" style="height: 50px; margin-top: 12px">
+            Đóng
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div id="myForm" style="
+        position: fixed;
+
+        display: none;
+        left: 0;
+        bottom: 0;
+        top: 0;
+        right: 0;
+        background: transparent;
+      ">
+      <div class="form-popup">
+        <form action="/action_page.php" class="form-container">
+          <h1>Đăng ký</h1>
+
+          <label for="name"><b>Họ Tên</b></label>
+          <input id="name" type="text" placeholder="Họ Tên" name="name" required />
+
+          <label for="phone"><b>Số điện thoại</b></label>
+          <input id="phone" type="phone" placeholder="Số điện thoại" name="phone" required />
+
+          <button type="submit" class="btn">Đăng nhập</button>
+          <button type="button" class="btn cancel" (click)="closeForm()">
+            Đóng
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div id="myLoading" style="
+        position: fixed;
+        display: none;
+        left: 0;
+        bottom: 0;
+        top: 0;
+        right: 0;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.7);
+      ">
+      <div class="svg">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg"
+          x="0px" y="0px" width="50px" height="50px" viewBox="0 0 213.235 241.176" xml:space="preserve">
+          <path d="M108.581,64.968V14.124l44.007,25.422L108.581,64.968" />
+          <path fill-opacity="1" d="M153.591,92.101V41.258L109.582,66.68L153.591,92.101" />
+          <path d="M155.586,92.062V41.221l44.009,25.42L155.586,92.062" />
+          <path fill-opacity="1" d="M200.299,119.14V68.297l-44.004,25.421L200.299,119.14" />
+          <path fill-opacity="1" d="M155.586,146.255V95.412l44.009,25.422L155.586,146.255" />
+          <path fill-opacity="1" d="M200.299,173.35v-50.844l-44.004,25.422L200.299,173.35" />
+          <path fill-opacity="1" d="M155.586,200.482v-50.84l44.009,25.417L155.586,200.482" />
+          <path fill-opacity="1" d="M153.591,200.521v-50.84l-44.009,25.418L153.591,200.521" />
+          <path fill-opacity="1" d="M108.581,227.696v-50.844l44.007,25.421L108.581,227.696" />
+          <path fill-opacity="1" d="M106.62,227.696v-50.844l-44.005,25.421L106.62,227.696" />
+          <path fill-opacity="1" d="M61.562,200.553V149.71l44.007,25.423L61.562,200.553" />
+          <path fill-opacity="1" d="M59.709,200.56v-50.843l-44.008,25.422L59.709,200.56" />
+          <path fill-opacity="1" d="M14.699,173.467v-50.843l44.01,25.42L14.699,173.467" />
+          <path fill-opacity="1" d="M59.709,146.235V95.392l-44.008,25.42L59.709,146.235" />
+          <path fill-opacity="1" d="M14.699,119.141V68.297l44.01,25.421L14.699,119.141" />
+          <path fill-opacity="1" d="M59.709,92.101V41.258L15.701,66.68L59.709,92.101" />
+          <path fill-opacity="1" d="M61.562,92.092V41.249l44.007,25.419L61.562,92.092" />
+          <path fill-opacity="1" d="M106.62,64.968V14.124L62.614,39.546L106.62,64.968" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>NTCB</title>
+  <base href="/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+</head>
+
+<body>
+  <script>
+    var exports = {};
+  </script>
+  <script src="./assets/index.js"></script>
+  <script language="JavaScript" type="text/javascript">
+    window.function = function getData(data) {
+      callAngularFunction(data);
+    };
+  </script>
+  <script>
+    function callAngularFunction(data) {
+      window.angularComponentReference.zone.run(() => {
+        window.angularComponentReference.loadAngularFunction(data);
+      });
+    }
+  </script>
+
+  <nx-project-root></nx-project-root>
+</body>
+
+</html>
