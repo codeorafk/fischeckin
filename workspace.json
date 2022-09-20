@@ -103,6 +103,63 @@
       },
       "tags": []
     },
+    "fis": {
+      "root": "apps/fis",
+      "sourceRoot": "apps/fis/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:webpack",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/fis",
+            "main": "apps/fis/src/main.ts",
+            "tsConfig": "apps/fis/tsconfig.app.json",
+            "assets": ["apps/fis/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/fis/src/environments/environment.ts",
+                  "with": "apps/fis/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:node",
+          "options": {
+            "buildTarget": "fis:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "fis:build:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/fis/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/fis"],
+          "options": {
+            "jestConfig": "apps/fis/jest.config.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
     "ntcb": {
       "projectType": "application",
       "root": "apps/ntcb",
