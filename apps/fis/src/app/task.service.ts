@@ -79,7 +79,7 @@ export class TasksService {
 
   async getListUser() {
     const user = await this.userModel.find({});
-    if (!user) {
+    if (!user || user.length == 0) {
       return listUser;
     }
     return user;
