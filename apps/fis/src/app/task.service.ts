@@ -105,6 +105,7 @@ export class TasksService {
                 const check = await this.appService.getDayStatus(data.token);
                 if (check) {
                   this.appService.checkIn(data.token);
+                  this.appService.saveData(data.userId, '1');
                 }
               }
             }, check * 50 * 1000 * i);
@@ -133,8 +134,8 @@ export class TasksService {
               );
 
               if (data.token) {
-                console.log(users[i].userName);
                 this.appService.checkOut(data.token);
+                this.appService.saveData(data.userId, '2');
               }
             }, check * 50 * 1000 * i);
           }
