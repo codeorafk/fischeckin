@@ -1,1 +1,16 @@
-<nx-project-nx-welcome></nx-project-nx-welcome> <router-outlet></router-outlet>
+<ng-container *ngFor="let user of users; index as idx">
+  <div>
+    {{ user.userName }}
+  </div>
+  <input [(ngModel)]="passwords[idx]" />
+
+  <input
+    type="checkbox"
+    hidden="hidden"
+    [id]="'username' + user.id"
+    [(ngModel)]="user.isCheckin"
+  />
+  <label class="switch" [for]="'username' + user.id"></label>
+
+  <button (click)="onClick(idx)">save</button>
+</ng-container>
