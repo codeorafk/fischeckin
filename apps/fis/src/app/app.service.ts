@@ -14,6 +14,11 @@ export class AppService {
     return user;
   }
 
+  public async getDetailUser(userName: string) {
+    const user = await this.userModel.findOne({ userName: userName });
+    return user;
+  }
+
   public async editUser(body) {
     const user = new this.userModel({
       userName: body['user-name'],

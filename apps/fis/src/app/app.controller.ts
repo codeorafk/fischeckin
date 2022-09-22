@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Req } from '@nestjs/common';
+import { Controller, Get, Param, Post, Req } from '@nestjs/common';
 import { Request } from 'express';
 import { AppService } from './app.service';
 
@@ -9,6 +9,11 @@ export class AppController {
   @Get('/user')
   users() {
     return this.appService.getListUser();
+  }
+
+  @Get('/user/:username')
+  usersDetail(@Param('username') username: string) {
+    return this.appService.getDetailUser(username);
   }
 
   @Post('/check')
