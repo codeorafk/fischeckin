@@ -1,12 +1,18 @@
+$round: 8px;
+$pink-1: #fdd9e5;
+$pink-2: #fa9dbc;
+$pink-3: #fe046a;
 body {
   font-family: sans-serif;
-  padding: 50px 100px;
   text-align: center;
 }
 h2 {
   font-size: 16px;
   margin-bottom: 1.5em;
   color: #333;
+}
+* {
+  font-family: 'Poppins', sans-serif;
 }
 
 /**
@@ -15,8 +21,8 @@ h2 {
 .switch {
     display: inline-block;
     position: relative;
-    width: 50px;
-    height: 25px;
+    width: 44px;
+    height: 24px;
     border-radius: 20px;
     background: #dfd9ea;
     transition: background 0.28s cubic-bezier(0.4, 0, 0.2, 1);
@@ -26,10 +32,10 @@ h2 {
 .switch::before {
     content: '';
     position: absolute;
-    top: 1px;
+    top: 2px;
     left: 2px;
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     background: #fafafa;
     border-radius: 50%;
     transition: left 0.28s cubic-bezier(0.4, 0, 0.2, 1), background 0.28s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
@@ -38,12 +44,297 @@ h2 {
     box-shadow: 0 2px 8px rgba(0,0,0,0.28), 0 0 0 20px rgba(128,128,128,0.1);
 }
 input:checked + .switch {
-    background: #72da67;
+    background: $pink-3;
 }
 input:checked + .switch::before {
-    left: 27px;
+  left: 22px;
     background: #fff;
 }
 input:checked + .switch:active::before {
     box-shadow: 0 2px 8px rgba(0,0,0,0.28), 0 0 0 20px rgba(0,150,136,0.2);
 }
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.w1-2 {
+  width: 50%;
+}
+.w-screen{
+  width: 100vw;
+}
+.h-screen {
+  height: 100vh;
+}
+.shadow {
+  background: $pink-1;
+  opacity: 0.8;
+  filter: blur(100px);
+  position: fixed;
+  width: 50%;
+  height: 120%;
+  translate: 0 -30%;
+}
+.img {
+  position:fixed;
+  max-height: 80%;
+  max-width: 50%;
+  object-fit: contain;
+}
+.container {
+  padding: 60px 80px;
+}
+
+.card {
+  padding: 24px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  background-color: $pink-1;
+  margin-bottom: 24px;
+}
+.card-right {
+  flex: 1 1 100%;
+  margin-right:24px;
+  .input:first-child {
+    margin-bottom: 8px;
+  }
+  .input {
+    border-radius: 12px;
+    background-color: white;
+    height: 44px;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    border: 2px solid transparent;
+    &:focus-within {
+      border: 2px solid $pink-2;
+    }
+  }
+
+}
+.input {
+  border-radius: 12px;
+  background-color: white;
+  height: 44px;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  border: 2px solid transparent;
+  &:focus-within {
+    border: 2px solid $pink-2;
+  }
+  box-shadow: 0px 0px 20px rgba(44, 44, 44, 0.1);
+}
+input {
+  width: 100%;
+  border: none;
+  outline: none;
+  height: 90%;
+  font-size: 18px;
+}
+.card-left {
+  width: 78px;
+  .switch-btn {
+    height: 52px;
+  }
+  button {
+    border-radius: 10px;
+    height: 44px;
+    width: 78px;
+    font-size: 20px;
+    background-color: $pink-2;
+    box-shadow: 0px 12px 21px 4px rgba(244, 52, 127, 0.2);
+    border: none;
+    color: white;
+  }
+}
+
+.login {
+  height: 60%;
+  padding: 80px;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 32px;
+  .title {
+    color: $pink-2;
+    margin-bottom: 48px;
+    text-align: center;
+  }
+  button {
+    width: 56px;
+    height: 56px;
+    background: #FA9DBC;
+    box-shadow: inset -3px -4px 6px rgba(0, 0, 0, 0.1), inset 6px 7px 9px rgba(255, 255, 255, 0.5);
+    border: none;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+  }
+}
+
+.frame {
+  width: 100%;
+}
+.btn {
+  margin-top: 54px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .h-screen {
+    height: 100%;
+  }
+  .w-screen {
+    width: 100%;;
+  }
+  .w1-2 {
+    width: 100%;
+  }
+  .shadow {
+    background: $pink-1;
+    opacity: 0.8;
+    filter: blur(100px);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    translate: 0 -30%;
+  }
+  .img {
+    position:fixed;
+    max-height: 80%;
+    max-width: 80%;
+    translate: 8% 0;
+    object-fit: contain;
+  }
+  .container {
+    margin-top: 80vh;
+    padding: 60px 80px;
+  }
+
+  .card {
+    padding: 24px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: $pink-1;
+    margin-bottom: 24px;
+  }
+  .card-right {
+    flex: 1 1 100%;
+    margin-right:24px;
+    .input:first-child {
+      margin-bottom: 8px;
+    }
+    .input {
+      border-radius: 12px;
+      background-color: white;
+      height: 44px;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 18px;
+      border: 2px solid transparent;
+      &:focus-within {
+        border: 2px solid $pink-2;
+      }
+    }
+
+  }
+  .input {
+    border-radius: 12px;
+    background-color: rgba(255,255,255,0.5);
+    height: 44px;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    border: 2px solid transparent;
+    &:focus-within {
+      border: 2px solid $pink-2;
+    }
+    box-shadow: 0px 0px 50px rgba(250, 157, 188, 0.25);
+  }
+  input {
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 90%;
+    font-size: 18px;
+    background: transparent;
+  }
+  .card-left {
+    width: 78px;
+    .switch-btn {
+      height: 52px;
+    }
+    button {
+      border-radius: 10px;
+      height: 44px;
+      width: 78px;
+      font-size: 20px;
+      background-color: $pink-2;
+      box-shadow: 0px 12px 21px 4px rgba(244, 52, 127, 0.2);
+      border: none;
+    }
+  }
+  .h-full {
+    height: fit-content;
+  }
+  .login {
+    position: relative;
+    margin-top: 50vh;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 28px;
+    .title {
+      color: $pink-2;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+    button {
+      width: 56px;
+      height: 56px;
+      background: #FA9DBC;
+      box-shadow: inset -3px -4px 6px rgba(0, 0, 0, 0.1), inset 6px 7px 9px rgba(255, 255, 255, 0.5);
+      border: none;
+      border-radius: 100%;
+      text-align: center;
+      font-size: 24px;
+      color: white;
+    }
+  }
+
+  .frame {
+    width: 100%;
+  }
+  .btn {
+    margin-top: 54px;
+    display: flex;
+    justify-content: center;
+  }
+}
+.quinn {
+  position: fixed;
+  font-style: italic;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  color:gray ;
+}
+

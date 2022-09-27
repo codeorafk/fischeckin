@@ -10,8 +10,13 @@ import { User } from './user';
 export class AppComponent {
   public users: User[] = [];
   public passwords: string[] = [];
+  public username: string | undefined;
+  public isOkay = false;
   constructor(private readonly service: EmployeeService) {
     this.getUsers();
+  }
+  checkUser(username: string) {
+    return;
   }
   getUsers() {
     this.service.getUsers().subscribe((users) => {
@@ -23,6 +28,12 @@ export class AppComponent {
     const tmpUser = new User(this.users[idx]);
     if (this.passwords[idx].length > 0) tmpUser.passWord = this.passwords[idx];
     this.setUsers(tmpUser);
+  }
+  onChange(idx: number) {
+    this.onClick(idx);
+  }
+  login() {
+    this.isOkay = true;
   }
   setUsers(user: User) {
     this.service.setUsers(user).subscribe();

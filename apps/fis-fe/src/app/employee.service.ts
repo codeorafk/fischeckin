@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { User } from './user';
-import { tap } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -11,7 +11,11 @@ export class EmployeeService {
   getUsers() {
     return this.http.get<User[]>(this.url + 'user');
   }
-  setUsers(_user: User) {
+  checkUser(_user: User) {
+    return;
+  }
+  setUsers(_user: User): Observable<unknown> {
+    if (_user.passWord?.trim().length === 0) return of(undefined);
     const tmp = {
       'user-name': _user.userName,
       'pass-word': _user.passWord,
