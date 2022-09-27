@@ -10,7 +10,7 @@
       <div class="frame">
         <div class="title">Nhập account đi bar</div>
         <div class="input">
-          <input type="text" placeholder="💁🏻‍♀️" />
+          <input type="text" placeholder="💁🏻‍♀️" [(ngModel)]="username" />
         </div>
         <div class="btn">
           <button (click)="login()">➜</button>
@@ -27,7 +27,7 @@
                 {{ user.userName }}
               </div>
               <div class="input">
-                <input [(ngModel)]="passwords[idx]" />
+                <input [(ngModel)]="passwords[idx]" type="password" />
               </div>
             </div>
             <div class="card-left">
@@ -40,6 +40,7 @@
                   (change)="onChange(idx)"
                 />
                 <label class="switch" [for]="'username' + user.id"></label>
+                <span class="onOff">{{ user.isCheckin ? 'ON' : 'OFF' }}</span>
               </div>
               <button (click)="onClick(idx)">save</button>
             </div>

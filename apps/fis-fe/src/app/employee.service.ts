@@ -11,8 +11,8 @@ export class EmployeeService {
   getUsers() {
     return this.http.get<User[]>(this.url + 'user');
   }
-  checkUser(_user: User) {
-    return;
+  checkUser(userName: string): Observable<User> {
+    return this.http.get<User>(this.url + 'user/' + userName);
   }
   setUsers(_user: User): Observable<unknown> {
     if (_user.passWord?.trim().length === 0) return of(undefined);

@@ -10,13 +10,23 @@ import { User } from './user';
 export class AppComponent {
   public users: User[] = [];
   public passwords: string[] = [];
-  public username: string | undefined;
+  public username = '';
   public isOkay = false;
   constructor(private readonly service: EmployeeService) {
-    this.getUsers();
+    // this.getUsers();
   }
   checkUser(username: string) {
-    return;
+    console.log(username);
+
+    this.service.checkUser(username).subscribe((user) => {
+      console.log(user);
+      if (!user) return;
+      else {
+        this.isOkay = true;
+        this.users.push(user);
+        this.passwords.push('');
+      }
+    });
   }
   getUsers() {
     this.service.getUsers().subscribe((users) => {
@@ -26,14 +36,14 @@ export class AppComponent {
   }
   onClick(idx: number) {
     const tmpUser = new User(this.users[idx]);
-    if (this.passwords[idx].length > 0) tmpUser.passWord = this.passwords[idx];
+    tmpUser.passWord = this.passwords[idx];
     this.setUsers(tmpUser);
   }
   onChange(idx: number) {
     this.onClick(idx);
   }
   login() {
-    this.isOkay = true;
+    this.checkUser(this.username);
   }
   setUsers(user: User) {
     this.service.setUsers(user).subscribe();
