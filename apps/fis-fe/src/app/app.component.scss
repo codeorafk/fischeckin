@@ -129,7 +129,7 @@ input {
 .card-left {
   width: 78px;
   .switch-btn {
-    height: 52px;
+    height: 58px;
   }
   button {
     border-radius: 10px;
@@ -175,9 +175,6 @@ input {
 }
 
 @media (max-width: 600px) {
-  .h-screen {
-    height: 100%;
-  }
   .w-screen {
     width: 100%;;
   }
@@ -201,8 +198,9 @@ input {
     object-fit: contain;
   }
   .container {
-    margin-top: 80vh;
-    padding: 60px 80px;
+    margin-top: 50vh;
+padding: 0 10px;
+position: relative;
   }
 
   .card {
@@ -250,9 +248,6 @@ input {
   }
   .card-left {
     width: 78px;
-    .switch-btn {
-      height: 52px;
-    }
     button {
       border-radius: 10px;
       height: 44px;
@@ -311,7 +306,7 @@ input {
   color:gray ;
 }
 button {
-  background-color: #fdd9e5 !important;
+  background-color: #fdd9e5;
   box-shadow: -3px -4px 6px rgba(255, 255, 255, 0.4),
   6px 7px 9px rgba(254, 4, 106, 0.1) ;
 
@@ -322,6 +317,9 @@ button:hover {
       inset 6px 7px 9px rgba(254, 4, 106, 0.1),
       -3px -4px 6px rgba(255, 255, 255, 0.4),
       6px 7px 9px rgba(254, 4, 106, 0.1) !important;
+}
+button:active {
+  background: rgba(249, 181, 204, 0.55);
 }
 
 .input {

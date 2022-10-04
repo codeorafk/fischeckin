@@ -40,7 +40,8 @@ export class AppComponent {
     this.setUsers(tmpUser);
   }
   onChange(idx: number) {
-    this.onClick(idx);
+    const tmpUser = new User(this.users[idx]);
+    this.setUsers(tmpUser);
   }
   login() {
     this.checkUser(this.username);
