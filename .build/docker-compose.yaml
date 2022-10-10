@@ -1,0 +1,78 @@
+version: "3.7"
+
+services:
+  # masterdata-service:
+  #   image: rc.paas.ttgt.vn/neo-platform/masterdata-service
+  #   build:
+  #     context: ../
+  #     dockerfile: .docker/Dockerfile.masterdata-service
+
+  # cameras-snapshot-service:
+  #   image: rc.paas.ttgt.vn/neo-platform/cameras-snapshot-service
+  #   build:
+  #     context: ../
+  #     dockerfile: .docker/Dockerfile.cameras-snapshot-service
+
+  # lookup-service:
+  #   image: rc.paas.ttgt.vn/neo-platform/lookup-service
+  #   build:
+  #     context: ../
+  #     dockerfile: .docker/Dockerfile.lookup-service
+
+  # binhdinh-kiemsoat:
+  #   image: rc.paas.ttgt.vn/other/fe-binhdinh-kiemsoat
+  #   build:
+  #     context: ../
+  #     dockerfile: .docker/Dockerfile.fe-binhdinh-kiemsoat
+
+  # be-binhdinh-kiemsoat:
+  #   image: rc.paas.ttgt.vn/other/be-binhdinh-kiemsoat
+  #   build:
+  #     context: ../
+  #     dockerfile: .docker/Dockerfile.be-binhdinh-kiemsoat
+
+  # fe-binhdinh-kiemsoat-admin:
+  #   image: rc.paas.ttgt.vn/other/fe-binhdinh-kiemsoat-admin
+  #   build:
+  #     context: ../
+  #     dockerfile: .docker/Dockerfile.fe-binhdinh-kiemsoat-admin
+
+  # api-export-excel:
+  #   image: rc.paas.ttgt.vn/neo-platform/api-export-excel
+  #   build:
+  #     context: ../
+  #     dockerfile: .docker/Dockerfile.api-export-excel
+
+  # neovs-admin-backend:
+  #   image: rc.paas.ttgt.vn/other/neovs-admin-backend
+  #   build:
+  #     context: ../
+  #     dockerfile: .docker/Dockerfile.neovs-admin-backend
+
+  # ttgt-next-api-feedbacks:
+  #   image: rc.paas.ttgt.vn/ttgt-next/api-feedbacks
+  #   platform: linux/amd64
+  #   build:
+  #     context: ../
+  #     dockerfile: .docker/Dockerfile.ttgt-next-api-feedbacks
+
+  fis:
+    image: nx/nx-platform/fis
+    platform: linux/amd64
+    build:
+      context: ../
+      dockerfile: .docker/Dockerfile.fis
+
+  # townloop-api-service:
+  #   image: rc.paas.ttgt.vn/neo-platform/api-townloop-services
+  #   platform: linux/amd64
+  #   build:
+  #     context: ../
+  #     dockerfile: .docker/Dockerfile.townloop-services
+
+  # townloop-api-payments:
+  #   image: rc.paas.ttgt.vn/neo-platform/api-townloop-payments
+  #   platform: linux/amd64
+  #   build:
+  #     context: ../
+  #     dockerfile: .docker/Dockerfile.townloop-payments

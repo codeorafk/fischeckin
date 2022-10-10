@@ -1,0 +1,45 @@
+
+### STAGE 1: Build ###
+
+# We label our stage as 'builder'
+FROM node:14.17.4 as builder
+
+RUN mkdir /app
+WORKDIR /app
+ENV APP fis
+
+RUN npm set progress=false && npm config set depth 0
+COPY package*.json /app/
+RUN npm i
+COPY . /app/
+
+ENV NODE_ENV production
+RUN npm run nx build -- $APP --configuration=production --outputPath=/app/dist/apps/$APP/
+
+#
+# ---- Release ----
+#
+
+FROM node:14.17.4-alpine
+ENV APP fis
+
+ENV NODE_ENV production
+
+RUN mkdir /app
+WORKDIR /app/
+COPY --from=builder /app/dist/apps/$APP/package*.json /app/dist/apps/$APP/
+
+WORKDIR /app/dist/apps/$APP
+RUN npm set progress=false && npm config set depth 0
+RUN npm i --prod
+RUN npm i @nestjs/axios
+
+COPY --from=builder /app/dist /app/dist
+
+ENV PORT 3000
+ENV SERVICE_NAME $APP
+
+EXPOSE $PORT
+
+#HEALTHCHECK CMD wget --no-verbose --tries=1 --spider http://localhost:$PORT/health || exit 1
+ENTRYPOINT ["node", "./main.js"]
