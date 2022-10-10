@@ -1,0 +1,354 @@
+$round: 8px;
+$pink-1: #fdd9e5;
+$pink-2: #fa9dbc;
+$pink-3: #fe046a;
+body {
+  font-family: sans-serif;
+  text-align: center;
+}
+h2 {
+  font-size: 16px;
+  margin-bottom: 1.5em;
+  color: #333;
+}
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+/**
+ * Simple HTML/CSS switch
+ */
+.switch {
+    display: inline-block;
+    position: relative;
+    width: 44px;
+    height: 24px;
+    border-radius: 20px;
+    background: #fdd9e5;
+box-shadow: inset -3px -4px 6px rgba(255, 255, 255, 0.4), inset 6px 7px 9px rgba(254, 4, 106, 0.1), -3px -4px 6px rgba(255, 255, 255, 0.4), 6px 7px 9px rgba(254, 4, 106, 0.1);
+    transition: background 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    vertical-align: middle;
+    cursor: pointer;
+}
+.switch::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+    background: #fdd9e5;
+box-shadow: inset -3px -4px 6px rgba(255, 255, 255, 0.4), inset 6px 7px 9px rgba(254, 4, 106, 0.1), -3px -4px 6px rgba(255, 255, 255, 0.4), 6px 7px 9px rgba(254, 4, 106, 0.1);
+    border-radius: 50%;
+    transition: left 0.28s cubic-bezier(0.4, 0, 0.2, 1), background 0.28s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:checked + .switch::before {
+  left: 24px;
+}
+
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.w1-2 {
+  width: 50%;
+}
+.w-screen{
+  width: 100vw;
+}
+.h-screen {
+  height: 100vh;
+}
+.shadow {
+  background: $pink-1;
+  opacity: 0.8;
+  filter: blur(100px);
+  position: fixed;
+  width: 50%;
+  height: 120%;
+  translate: 0 -30%;
+}
+.img {
+  position:fixed;
+  max-height: 80%;
+  max-width: 50%;
+  object-fit: contain;
+}
+.container {
+  padding: 60px 80px;
+}
+
+.card {
+  padding: 24px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  background-color: $pink-1;
+  margin-bottom: 24px;
+  box-shadow: inset -6px -8px 30px rgba(255, 255, 255, 0.4), inset 12px 14px 30px rgba(254, 4, 106, 0.1), -6px -8px 30px rgba(255, 255, 255, 0.4), 12px 14px 30px rgba(254, 4, 106, 0.2);
+border: 2px solid transparent;
+}
+.card-right {
+  flex: 1 1 100%;
+  margin-right:24px;
+  .input:first-child {
+    margin-bottom: 8px;
+  }
+  .input {
+    border-radius: 12px;
+    height: 44px;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    color: #f9599a;
+    font-weight: 700;
+  }
+
+}
+.input {
+  border-radius: 12px;
+  height: 44px;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+input {
+  width: 100%;
+  border: none;
+  outline: none;
+  height: 90%;
+  font-size: 18px;
+  background-color: #fb8db28c;
+}
+.card-left {
+  width: 78px;
+  .switch-btn {
+    height: 58px;
+  }
+  button {
+    border-radius: 10px;
+    height: 44px;
+    width: 78px;
+    font-size: 20px;
+    border: none;
+    color: white;
+  }
+}
+
+.login {
+  height: 60%;
+  padding: 80px;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 32px;
+  .title {
+    color: $pink-2;
+    margin-bottom: 48px;
+    text-align: center;
+  }
+  button {
+    width: 56px;
+    height: 56px;
+    background: #FA9DBC;
+    border: none;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+  }
+}
+
+.frame {
+  width: 100%;
+}
+.btn {
+  margin-top: 54px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .w-screen {
+    width: 100%;;
+  }
+  .w1-2 {
+    width: 100%;
+  }
+  .shadow {
+    background: $pink-1;
+    opacity: 0.8;
+    filter: blur(100px);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    translate: 0 -30%;
+  }
+  .img {
+    position:fixed;
+    max-height: 80%;
+    max-width: 80%;
+    translate: 8% 0;
+    object-fit: contain;
+  }
+  .container {
+    margin-top: 50vh;
+padding: 0 10px;
+position: relative;
+  }
+
+  .card {
+    padding: 24px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: $pink-1;
+    margin-bottom: 24px;
+  }
+  .card-right {
+    flex: 1 1 100%;
+    margin-right:24px;
+    .input:first-child {
+      margin-bottom: 8px;
+    }
+    .input {
+      border-radius: 12px;
+      height: 44px;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 18px;
+    }
+
+  }
+  .input {
+    border-radius: 12px;
+    height: 44px;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    border: 2px solid transparent;
+  }
+  input {
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 90%;
+    font-size: 18px;
+    background: transparent;
+  }
+  .card-left {
+    width: 78px;
+    button {
+      border-radius: 10px;
+      height: 44px;
+      width: 78px;
+      font-size: 20px;
+      background-color: $pink-2;
+      box-shadow: 0px 12px 21px 4px rgba(244, 52, 127, 0.2);
+      border: none;
+    }
+  }
+  .h-full {
+    height: fit-content;
+  }
+  .login {
+    position: relative;
+    margin-top: 50vh;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 28px;
+    .title {
+      color: $pink-2;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+    button {
+      width: 56px;
+      height: 56px;
+      border: none;
+      border-radius: 100%;
+      text-align: center;
+      font-size: 24px;
+      color: white;
+    }
+  }
+
+  .frame {
+    width: 100%;
+  }
+  .btn {
+    margin-top: 54px;
+    display: flex;
+    justify-content: center;
+  }
+}
+.quinn {
+  position: fixed;
+  font-style: italic;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  color:gray ;
+}
+button {
+  background-color: #fdd9e5;
+  box-shadow: -3px -4px 6px rgba(255, 255, 255, 0.4),
+  6px 7px 9px rgba(254, 4, 106, 0.1) ;
+
+}
+button:hover {
+  border: 2px solid transparent !important;
+  box-shadow: inset -3px -4px 6px rgba(255, 255, 255, 0.4),
+      inset 6px 7px 9px rgba(254, 4, 106, 0.1),
+      -3px -4px 6px rgba(255, 255, 255, 0.4),
+      6px 7px 9px rgba(254, 4, 106, 0.1) !important;
+}
+button:active {
+  background: rgba(249, 181, 204, 0.55);
+}
+
+.input {
+  box-shadow: inset -3px -4px 6px rgba(255, 255, 255, 0.4),
+  inset 6px 7px 9px rgba(254, 4, 106, 0.1),
+  -3px -4px 6px rgba(255, 255, 255, 0.4),
+  6px 7px 9px rgba(254, 4, 106, 0.1);
+
+  background-color: #fdd9e5;
+  border: none;
+  border: 2px solid #fdd9e5;
+
+  &:focus-within {
+    background-color: rgba(249, 181, 204, 0.55);
+    box-shadow: inset -3px -4px 6px rgba(244, 244, 244, 0.4), inset 6px 7px 9px rgba(254, 4, 106, 0.1), rgba(244, 244, 244, 0.4), 6px 7px 9px rgba(254, 4, 106, 0.1);
+  }
+}
+input {
+  background-color: transparent;
+  color: #fa9dbc;
+  font-weight: 700;
+  &:focus-visible {
+    color: #f20061;
+  }
+}
+.flex {
+  background-color: #fdd9e5;
+}
+.onOff {
+  margin-left: 4px;
+  color: white
+}

@@ -1,0 +1,52 @@
+<div class="flex w-screen h-screen">
+  <div class="w1-2 h-full">
+    <div>
+      <div class="shadow"></div>
+      <img src="assets/Saly-1.png" class="img" />
+    </div>
+  </div>
+  <div class="w1-2 h-full">
+    <div class="login" *ngIf="!isOkay; else okay">
+      <div class="frame">
+        <div class="title">Nhập account đi bar</div>
+        <div class="input">
+          <input type="text" placeholder="💁🏻‍♀️" [(ngModel)]="username" />
+        </div>
+        <div class="btn">
+          <button (click)="login()">➜</button>
+        </div>
+      </div>
+      <div class="quinn">Designed by @Quinn</div>
+    </div>
+    <ng-template #okay>
+      <div class="container">
+        <ng-container *ngFor="let user of users; index as idx">
+          <div class="card">
+            <div class="card-right">
+              <div class="input rounded-lg">
+                {{ user.userName }}
+              </div>
+              <div class="input">
+                <input [(ngModel)]="passwords[idx]" type="password" />
+              </div>
+            </div>
+            <div class="card-left">
+              <div class="switch-btn">
+                <input
+                  type="checkbox"
+                  hidden="hidden"
+                  [id]="'username' + user.id"
+                  [(ngModel)]="user.isCheckin"
+                  (change)="onChange(idx)"
+                />
+                <label class="switch" [for]="'username' + user.id"></label>
+                <span class="onOff">{{ user.isCheckin ? 'ON' : 'OFF' }}</span>
+              </div>
+              <button (click)="onClick(idx)">save</button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-template>
+  </div>
+</div>
