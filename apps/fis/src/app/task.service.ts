@@ -59,7 +59,7 @@ export class TasksService {
 
   private readonly logger = new Logger(TasksService.name);
 
-  @Cron('0 00 08 * * 1-5')
+  @Cron('0 05 08 * * 1-5')
   async handleCronCheckin() {
     this.logger.log('start check-in');
     this.checkInAuto();
