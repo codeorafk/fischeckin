@@ -1,0 +1,4 @@
+build:
+  web: yarn exec nx build fis
+run:
+  web: yarn exec nx serve fis
