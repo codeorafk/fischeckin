@@ -9,7 +9,6 @@
   },
   "scripts": {
     "build": "nx build",
-    "postinstall": "ngcc --properties es2020 browser module main",
     "start:backend": "nx run-many --target=serve --projects=fis --parallel=1"
   },
   "private": true,
