@@ -8,7 +8,10 @@
     "node": ">=16.0.0"
   },
   "scripts": {
+    "dev": "yarn nx run-many --target=serve --projects=fis --parallel=1",
     "build": "yarn nx run-many --target=build --projects=fis --parallel=1",
+    "start": "yarn nx run-many --target=serve --projects=fis --parallel=1",
+    "serve": "yarn nx run-many --target=serve --projects=fis --parallel=1",
     "start:backend": "yarn nx run-many --target=serve --projects=fis --parallel=1"
   },
   "private": true,
