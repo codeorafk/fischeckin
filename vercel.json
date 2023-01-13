@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "kaufman-bot",
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/apps/fis/main.js"
+    }
+  ]
+}
