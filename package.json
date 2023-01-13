@@ -8,8 +8,7 @@
     "node": ">=16.0.0"
   },
   "scripts": {
-    "start": "node dist/apps/fis/main.js",
-    "build": "yarn nx run-many --target=build --projects=fis --parallel=1"
+    "build": "yarn nx run-many --target=serve --projects=fis --parallel=1"
   },
   "private": true,
   "dependencies": {
